@@ -1,0 +1,9 @@
+@media only screen and (min-width: 0px) {
+
+    header {
+      height: 80px;
+      background: #ccc;
+      width: 100%;
+    }
+  
+  }
