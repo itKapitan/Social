@@ -1,30 +1,26 @@
 import React from 'react';
+import {connect} from "react-redux";
 import DialogPage from "./DialogPage";
 import {addNewMessageBodyCreator, updateNewMessageBodyCreator} from "../../../../redux/DialogsPageReducer";
 
 
-export default function DialogPageContainer(props) {
 
-
-    let onChangeTextareaText = (text) => {
-        props.store.dispatch(updateNewMessageBodyCreator(text))
+let mapStateToProps = (state) => {
+    return{
+        messages: state.DialogsPage.dialogMessages,
+        value: state.DialogsPage.dialogNewMessageBody,
     }
-    let onClickAddMessage = () => {
-        props.store.dispatch(addNewMessageBodyCreator());
+}
+let mapDispatchToProps = (dispatch) => {
+    return{
+        updateTextareaText: (text) => {
+            dispatch(updateNewMessageBodyCreator(text))
+        },
+        addMessage: () => {
+            dispatch(addNewMessageBodyCreator());
+        },
     }
-
-
-    return (
-        <DialogPage
-            updateTextareaText={onChangeTextareaText}
-            addMessage={onClickAddMessage}
-
-            value={props.store.getState().DialogsPage.dialogNewMessageBody}
-            messages={props.store.getState().DialogsPage.dialogMessages}
-        />
-    )
-
 }
 
-
-
+const DialogPageContainer = connect(mapStateToProps,mapDispatchToProps)(DialogPage)
+export default DialogPageContainer

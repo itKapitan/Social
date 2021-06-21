@@ -14,11 +14,11 @@ export default function Main(props) {
     return (
         <main className={s.main}>
             <Route path='/profile' exact render={() =>
-                <ProfileMy store={props.store}/>
+                <ProfileMy/>
             }/>
-            <Dialogs store={props.store}/>
+            <Dialogs/>
             <Route path='/feed' exact render={() =>
-                <News store={props.store}/>
+                <News/>
             }/>
             <Route path='/settings' exact render={() =>
                 <SettingsMy/>

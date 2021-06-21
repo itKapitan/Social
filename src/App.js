@@ -1,5 +1,4 @@
 import React from 'react'
-import {BrowserRouter} from "react-router-dom";
 
 import './App.css';
 
@@ -13,14 +12,12 @@ import Footer from './components/Footer/Footer'
 export default function App(props) {
 
   return (
-      <BrowserRouter>
         <div className="wr df fw">
           <Header/>
           <Aside/>
-          <Main store={props.store}/>
+          <Main />
           <Footer/>
         </div>
-      </BrowserRouter>
   );
 
 }

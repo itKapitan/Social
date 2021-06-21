@@ -5,7 +5,7 @@ import s from './DialogsItem.module.css'
 
 export default function DialogItem(props) {
 
-    let dialogElements = props.store.getState().DialogsPage.dialogs.map((props) => {
+    let dialogElements = props.dialogs.map((props) => {
         return (
             <NavLink to={`/dialog/${props.id}`} className={s.item}>
                 <span className={s.user}>

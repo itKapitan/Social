@@ -1,25 +1,26 @@
-import React from 'react'
+import {connect} from "react-redux";
 import PostAdd from "./PostAdd";
 import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../../redux/ProfilePageMyReducer";
 
 
 
-export default function PostAddContainer(props) {
-
-    let onChangePostTextarea = (text) => {
-        props.store.dispatch(updateNewPostTextActionCreator(text))
+let mapStateToProps = (state) => {
+    return{
+        value: state.ProfilePageMy.newPostText,
     }
-    let onClickPostAdd = () => {
-        props.store.dispatch(addPostActionCreator())
-    }
-
-
-    return (
-        <PostAdd
-            newPostText={onChangePostTextarea}
-            addPost={onClickPostAdd}
-            value={props.store.getState().ProfilePageMy.newPostText}
-        />
-    )
-
 }
+let mapDispatchToProps = (dispatch) => {
+    return{
+        newPostText: (text) => {
+            dispatch(updateNewPostTextActionCreator(text))
+        },
+        addPost: () => {
+            dispatch(addPostActionCreator())
+        },
+    }
+}
+
+const PostAddContainer = connect(mapStateToProps,mapDispatchToProps)(PostAdd)
+export default PostAddContainer
+
+

@@ -1,14 +1,14 @@
 import React from 'react';
 import s from "./News.module.scss";
 import NewsNav from "./NewsNav/NewsNav";
-import NewsContent from "./NewsContent/NewsContent";
+import NewsContentContainer from "./NewsContent/NewsContentContainer";
 
 
 export default function News(props) {
 
     return (
         <div className={s.wr}>
-            <NewsContent store={props.store} />
+            <NewsContentContainer/>
             <NewsNav/>
         </div>
     );
