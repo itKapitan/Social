@@ -2,14 +2,9 @@ import React from "react";
 import s from './NewsContent..module.scss'
 
 
-
-
-
 const NewsContent = (props) => {
 
-    let state = props.store.getState().FeedPage.news;
-
-    let feedItem = state.map((props) => {
+    let feedItem = props.news.map((props) => {
         return (
             <div className={s.wr}>
                 <div className={s.items}>

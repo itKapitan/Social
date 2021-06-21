@@ -9,8 +9,8 @@ export default function ProfileMy(props) {
     return (
         <>
             <ProfileHeader/>
-            <PostAddContainer store={props.store}/>
-            <PostItemContainer store={props.store}/>
+            <PostAddContainer/>
+            <PostItemContainer/>
         </>
     )
 

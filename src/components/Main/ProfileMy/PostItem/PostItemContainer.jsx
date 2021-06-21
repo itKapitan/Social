@@ -1,14 +1,14 @@
 import React from 'react'
+import {connect} from "react-redux";
 import PostItem from "./PostItem";
 
 
-export default function PostItemContainer(props) {
 
-    return (
-        <PostItem
-            posts={props.store.getState().ProfilePageMy.posts}
-        />
-    )
-
+let mapStateToProps = (state) => {
+    return{
+        posts: state.ProfilePageMy.posts
+    }
 }
 
+const PostItemContainer = connect(mapStateToProps)(PostItem)
+export default PostItemContainer

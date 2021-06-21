@@ -241,7 +241,7 @@ export default function DialogsPageReducer(state = initState, action) {
         case UPDATE_NEW_MESSAGE_BODY:
             return {
                 ...state,
-                dialogNewMessageBody: action.body
+                dialogNewMessageBody: action.body,
             }
         case ADD_NEW_MESSAGE_BODY:
             return {

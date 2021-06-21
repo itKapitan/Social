@@ -14,7 +14,6 @@ export default function PostAdd(props) {
     }
 
 
-
     return (
         <div className={s.postAdd}>
                 <textarea

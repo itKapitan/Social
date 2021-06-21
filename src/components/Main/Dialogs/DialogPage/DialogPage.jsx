@@ -14,7 +14,6 @@ export default function DialogPage(props) {
         props.addMessage();
     }
 
-
     let messageList = props.messages.map((p) => {
         return (
             <div key={p.id} id={p.id} className={s.item}>
@@ -43,7 +42,7 @@ export default function DialogPage(props) {
             <div className={s.dispatch}>
                 <textarea
                     onChange={onChangeNewMessage}
-                    placeholder="Напишите сообщение..."
+                    placeholder={'Напишите сообщение...'}
                     value={props.value}
                     className={s.textarea}
                 />
