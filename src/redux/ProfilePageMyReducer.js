@@ -30,7 +30,7 @@ export default function ProfilePageMyReducer(state = initState, action) {
                 posts: [
                     {
                         id: 6,
-                        name: 'Rodin',
+                        name: 'Rodion',
                         avatar: 'https://img.qsb.su/8wiyhzwdhz.jpg',
                         text: state.newPostText,
                     },
