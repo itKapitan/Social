@@ -4,8 +4,7 @@ import s from './PostItem.module.css'
 
 export default function PostItem(props) {
 
-
-    let PostItemsList = props.posts.map((props) => {
+    props.posts.map((props) => {
         return (
             <div className={s.postItem} key={props.id} id={props.id}>
                 <div className={s.postItem__header}>
@@ -27,11 +26,6 @@ export default function PostItem(props) {
         )
     });
 
-    return (
-        <>
-            {PostItemsList}
-        </>
-    )
 
 }
 
