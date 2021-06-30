@@ -5,6 +5,7 @@ import FeedPageReducer from "./FeedPageReducer";
 import ProfilePageMyReducer from "./ProfilePageMyReducer";
 import ProfilePageOtherReducer from "./ProfilePageOtherReducer";
 import SettingsPageReducer from "./SettingsPageReducer";
+import UsersPageReducer from "./UsersPageReducer";
 
 let reducers = combineReducers({
     DialogsPage: DialogsPageReducer,
@@ -12,6 +13,7 @@ let reducers = combineReducers({
     ProfilePageMy: ProfilePageMyReducer,
     ProfilePageOther: ProfilePageOtherReducer,
     SettingsPage: SettingsPageReducer,
+    UsersPage: UsersPageReducer,
 })
 
 let store = createStore(reducers);

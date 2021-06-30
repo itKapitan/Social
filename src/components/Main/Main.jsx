@@ -7,6 +7,7 @@ import ProfileMy from './ProfileMy/ProfileMy'
 import Dialogs from './Dialogs/Dialogs'
 import News from "./News/News"
 import SettingsMy from "./SettingsMy/SettingsMy"
+import UsersContainer from "./Users/UsersContainer";
 
 
 export default function Main(props) {
@@ -23,6 +24,9 @@ export default function Main(props) {
             <Route path='/settings' exact render={() =>
                 <SettingsMy/>
             }/>
+            <Route path='/users' exact>
+                <UsersContainer/>
+            </Route>
         </main>
     )
 }

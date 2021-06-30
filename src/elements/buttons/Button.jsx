@@ -1,14 +1,16 @@
 import React from 'react'
 import s from './Button.module.scss'
 
-const Button = (props) => {
-    let btnStyle = s[props.Style]
+const Button = ({Style,onClick,Text,mstyle}) => {
+
+
+
     return (
         <button
-            onClick={props.onClick}
-            className={`${btnStyle} ${s.button}`}
+            onClick={onClick}
+            className={`${s[Style]}  ${s.button} ${mstyle}`}
         >
-            {props.Text}
+            {Text}
         </button>
     )
 }
