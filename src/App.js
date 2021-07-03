@@ -9,7 +9,7 @@ import Footer from './components/Footer/Footer'
 
 
 
-export default function App(props) {
+export default function App() {
 
   return (
         <div className="wr df fw">

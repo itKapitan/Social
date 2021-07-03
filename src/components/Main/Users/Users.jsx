@@ -1,9 +1,8 @@
 import React from 'react'
 import s from "./style.module.css"
 import Button from "../../../elements/buttons/Button";
-import {follow, unFollow} from "../../../redux/UsersPageReducer";
 
-export default function Users({users}) {
+export default function Users({users,unFollow,follow}) {
     let usersList =  users.map(({id,avatar,name,followed}) => {
         return (
             <>
@@ -24,7 +23,6 @@ export default function Users({users}) {
                                 :
                                 <Button onClick={ ()=>{follow(id)} } Text={'Добавить в друзья'} Style={'default'} mstyle={s.btn}/>
                             }
-
                         </div>
                     </div>
 

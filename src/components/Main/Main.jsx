@@ -10,7 +10,7 @@ import SettingsMy from "./SettingsMy/SettingsMy"
 import UsersContainer from "./Users/UsersContainer";
 
 
-export default function Main(props) {
+export default function Main() {
 
     return (
         <main className={s.main}>
