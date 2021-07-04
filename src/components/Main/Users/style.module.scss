@@ -37,6 +37,9 @@
   line-height: 20px;
   color: #282828;
   font-weight: 500;
+  &:first-letter {
+    text-transform: uppercase;
+  }
 }
 .buttons {
   margin-top: 10px;
