@@ -47,3 +47,13 @@
 .btn {
   margin-left: 10px;
 }
+.paginationWr {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+
+}
+.pagination:not(:last-child) {
+  margin-right: 5px;
+
+}
