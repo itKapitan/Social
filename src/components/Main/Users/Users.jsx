@@ -8,18 +8,21 @@ import noAvatar from "../../../assets/images/noavatar.png";
 
 export default function Users({users, unFollow, follow, setUsers}) {
 
-    if (users.length === 0) {
-        axios.get('https://social-network.samuraijs.com/api/1.0/users').then(response => {
-            setUsers(response.data.items);
-        });
+    let getUsers = () => {
+        if (users.length === 0) {
+            axios.get('https://social-network.samuraijs.com/api/1.0/users').then(response => {
+                setUsers(response.data.items);
+            });
 
+        }
     }
+
     let usersList = users.map(({id, photos, name, followed}) => {
         return (
             <>
                 <div className={s.wr} key={id}>
                     <div className={s.avatar}>
-                        { photos.small ?
+                        {photos.small ?
                             <img src={photos.small} alt={name}/> :
                             <img src={noAvatar} alt={name}/>
                         }
@@ -48,9 +51,11 @@ export default function Users({users, unFollow, follow, setUsers}) {
     });
     return (
         <>
+            <Button onClick={getUsers} Text={'Загрузить пользователей'} Style={'default'}/>
             {usersList}
             <Button Text={'Показать ещё'} Style={'default'}/>
         </>
+
     )
 
 
