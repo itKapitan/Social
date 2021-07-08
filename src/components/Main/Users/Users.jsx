@@ -1,62 +1,74 @@
-import React from 'react'
-import s from "./style.module.scss"
+import s from "./UsersStyle.module.scss";
 import Button from "../../../elements/buttons/Button";
-import * as axios from "axios";
-
 import noAvatar from "../../../assets/images/noavatar.png";
+import React from "react";
 
 
-export default function Users({users, unFollow, follow, setUsers}) {
+export default function Users(
+    {
+        totalUsersCount,
+        pageSize,
+        onPageChanged,
+        currenPage,
+        users,
+        unFollow,
+        follow
+    }) {
 
-    let getUsers = () => {
-        if (users.length === 0) {
-            axios.get('https://social-network.samuraijs.com/api/1.0/users').then(response => {
-                setUsers(response.data.items);
-            });
-
-        }
+    let pagesCount = Math.ceil(totalUsersCount / pageSize);
+    let pages = [];
+    for (let i = 1; i <= pagesCount; i++) {
+        pages.push(i);
     }
 
-    let usersList = users.map(({id, photos, name, followed}) => {
-        return (
-            <>
-                <div className={s.wr} key={id}>
-                    <div className={s.avatar}>
-                        {photos.small ?
-                            <img src={photos.small} alt={name}/> :
-                            <img src={noAvatar} alt={name}/>
-                        }
-                    </div>
-                    <div className={s.info}>
-                        <div className={s.name}>
-                            {name}
-                        </div>
-                        <div className={s.buttons}>
-                            <Button Text={'Написать сообщение'} Style={'default'}/>
-                            {followed ?
-                                <Button onClick={() => {
-                                    unFollow(id)
-                                }} Text={'Удалить из друзей'} Style={'default'} mstyle={s.btn}/>
-                                :
-                                <Button onClick={() => {
-                                    follow(id)
-                                }} Text={'Добавить в друзья'} Style={'default'} mstyle={s.btn}/>
-                            }
-                        </div>
-                    </div>
-
-                </div>
-            </>
-        );
-    });
     return (
         <>
-            <Button onClick={getUsers} Text={'Загрузить пользователей'} Style={'default'}/>
-            {usersList}
-            <Button Text={'Показать ещё'} Style={'default'}/>
+            <div className={s.paginationWr}>
+                {pages.map(p => {
+                    return (
+                        <Button
+                            onClick={() => {
+                                onPageChanged(p)
+                            }}
+                            Style={currenPage === p ? 'default' : 'light'}
+                            mstyle={s.pagination}
+                        >
+                            {p}
+                        </Button>
+                    )
+                })}
+
+            </div>
+            {
+                users.map(u =>
+                    <div className={s.wr} key={u.id}>
+                        <div className={s.avatar}>
+                            {u.photos.small ?
+                                <img src={u.photos.small} alt={u.name}/> :
+                                <img src={noAvatar} alt={u.name}/>
+                            }
+                        </div>
+                        <div className={s.info}>
+                            <div className={s.name}>
+                                {u.name}
+                            </div>
+                            <div className={s.buttons}>
+                                <Button Text={'Написать сообщение'} Style={'default'}/>
+                                {u.followed ?
+                                    <Button onClick={() => {unFollow(u.id)}} Style={'default'} mstyle={s.btn}>
+                                        Удалить из друзей
+                                    </Button>
+                                    :
+                                    <Button onClick={() => {follow(u.id)}} Style={'default'} mstyle={s.btn}>
+                                        Добавить в друзья
+                                    </Button>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                )
+            }
+
         </>
-
     )
-
-
 }
