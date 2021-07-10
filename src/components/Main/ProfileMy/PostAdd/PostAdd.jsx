@@ -3,32 +3,27 @@ import s from './PostAdd.module.css'
 import Button from "../../../../elements/buttons/Button";
 
 
-export default function PostAdd(props) {
+export default function PostAdd({value, newPostText, addPost}) {
 
     let onChangePostTextarea = (e) => {
         let text = e.target.value
-        props.newPostText(text)
+        newPostText(text)
     }
     let onClickPostAdd = () => {
-        props.addPost();
+        addPost();
     }
-
 
     return (
         <div className={s.postAdd}>
-                <textarea
-                    onChange={onChangePostTextarea}
-                    placeholder={'Что у вас нового...'}
-                    value={props.value}
-                    className={s.postAdd__textarea}
-                />
-
-            <Button
-                onClick={onClickPostAdd}
-                Style={'default'}
-                Text={'Опубликовать'}
+            <textarea
+                onChange={onChangePostTextarea}
+                placeholder={'Что у вас нового...'}
+                value={value}
+                className={s.postAdd__textarea}
             />
-
+            <Button onClick={onClickPostAdd} Style={'default'}>
+                Опубликовать
+            </Button>
         </div>
     )
 

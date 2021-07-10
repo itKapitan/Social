@@ -3,28 +3,29 @@ import {Route} from "react-router-dom"
 
 import s from './Main.module.css'
 
-import ProfileMy from './ProfileMy/ProfileMy'
+import ProfileMyContainer from "./ProfileMy/ProfileMyContainer";
 import Dialogs from './Dialogs/Dialogs'
 import News from "./News/News"
 import SettingsMy from "./SettingsMy/SettingsMy"
 import UsersContainer from "./Users/UsersContainer";
 
 
+
 export default function Main() {
 
     return (
         <main className={s.main}>
-            <Route path='/profile' exact render={() =>
-                <ProfileMy/>
-            }/>
+            <Route path='/profile' exact>
+                <ProfileMyContainer/>
+            </Route>
             <Dialogs/>
-            <Route path='/feed' exact render={() =>
+            <Route path='/feed' exact>
                 <News/>
-            }/>
-            <Route path='/settings' exact render={() =>
+            </Route>
+            <Route path='/settings' exact>
                 <SettingsMy/>
-            }/>
-            <Route path='/users' exact>
+            </Route>
+            <Route path='/users' >
                 <UsersContainer/>
             </Route>
         </main>

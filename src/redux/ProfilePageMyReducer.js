@@ -44,15 +44,5 @@ export default function ProfilePageMyReducer(state = initState, action) {
 
 }
 
-export const newPostText = (text) => {
-    return {
-        type: UPDATE_NEW_POST_TEXT,
-        newText: text
-    }
-}
-
-export const addPost = () => {
-    return {
-        type: ADD_POST
-    }
-}
+export const newPostText = (text) => ({type: UPDATE_NEW_POST_TEXT, newText: text})
+export const addPost = () => ({type: ADD_POST})
