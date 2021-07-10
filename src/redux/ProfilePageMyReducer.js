@@ -44,14 +44,14 @@ export default function ProfilePageMyReducer(state = initState, action) {
 
 }
 
-export const updateNewPostTextActionCreator = (text) => {
+export const newPostText = (text) => {
     return {
         type: UPDATE_NEW_POST_TEXT,
         newText: text
     }
 }
 
-export const addPostActionCreator = () => {
+export const addPost = () => {
     return {
         type: ADD_POST
     }

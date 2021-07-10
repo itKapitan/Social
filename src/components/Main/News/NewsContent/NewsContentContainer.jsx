@@ -8,5 +8,4 @@ let mapStateToProps = (state) => {
     }
 }
 
-const NewsContentContainer = connect(mapStateToProps)(NewsContent)
-export default NewsContentContainer
+export default connect(mapStateToProps)(NewsContent)

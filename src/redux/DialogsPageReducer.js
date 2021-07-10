@@ -263,13 +263,13 @@ export default function DialogsPageReducer(state = initState, action) {
     }
 
 }
-export const updateNewMessageBodyCreator = (text) => {
+export const updateTextareaText = (text) => {
     return {
         type: UPDATE_NEW_MESSAGE_BODY,
         body: text
     }
 }
-export const addNewMessageBodyCreator = () => {
+export const addMessage = () => {
     return {
         type: ADD_NEW_MESSAGE_BODY
     }

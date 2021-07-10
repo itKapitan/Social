@@ -1,14 +1,15 @@
 @media only screen and (min-width: 0px) {
 
 
-    main {
-      display: flex;
-      flex-direction: column;
-      width: calc(100% - 200px);
-      min-height: calc(100vh - (80px + 50px));
-      background: #EDEEF0;
-      padding: 20px;
+    .main {
+        display: flex;
+        flex-direction: column;
+        width: calc(100% - 200px);
+        min-height: calc(100vh - (80px + 50px));
+        background: #EDEEF0;
+        padding: 20px;
+        position: relative;
     }
-  
-  
-  }
+
+
+}

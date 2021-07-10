@@ -1,7 +1,9 @@
+import React from "react";
 import s from "./UsersStyle.module.scss";
 import Button from "../../../elements/buttons/Button";
 import noAvatar from "../../../assets/images/noavatar.png";
-import React from "react";
+import {Link} from "react-router-dom";
+import Preloaders from "../../../elements/preloader/Preloaders";
 
 
 export default function Users(
@@ -12,7 +14,8 @@ export default function Users(
         currenPage,
         users,
         unFollow,
-        follow
+        follow,
+        isFetching
     }) {
 
     let pagesCount = Math.ceil(totalUsersCount / pageSize);
@@ -23,50 +26,52 @@ export default function Users(
 
     return (
         <>
+            {isFetching && <Preloaders/>}
+
             <div className={s.paginationWr}>
                 {pages.map(p => {
                     return (
-                        <Button
-                            onClick={() => {
-                                onPageChanged(p)
-                            }}
-                            Style={currenPage === p ? 'default' : 'light'}
-                            mstyle={s.pagination}
-                        >
-                            {p}
-                        </Button>
+                        <Link to={`/users/?page=${p}`}
+                              onClick={() => {
+                                  onPageChanged(p)
+                              }}
+                              className={`${s.pagination} ${currenPage === p ? 'default' : 'light'}`}
+                        >{p}</Link>
                     )
                 })}
 
             </div>
-            {
-                users.map(u =>
-                    <div className={s.wr} key={u.id}>
-                        <div className={s.avatar}>
-                            {u.photos.small ?
-                                <img src={u.photos.small} alt={u.name}/> :
-                                <img src={noAvatar} alt={u.name}/>
+            {users.map(u =>
+                <div className={s.wr} key={u.id}>
+                    <div className={s.avatar}>
+                        {u.photos.small ?
+                            <img src={u.photos.small} alt={u.name}/> :
+                            <img src={noAvatar} alt={u.name}/>
+                        }
+                    </div>
+                    <div className={s.info}>
+                        <div className={s.name}>
+                            {u.name}
+                        </div>
+                        <div className={s.buttons}>
+                            <Button Text={'Написать сообщение'} Style={'default'}/>
+                            {u.followed ?
+                                <Button onClick={() => {
+                                    unFollow(u.id)
+                                }} Style={'default'} mstyle={s.btn}>
+                                    Удалить из друзей
+                                </Button>
+                                :
+                                <Button onClick={() => {
+                                    follow(u.id)
+                                }} Style={'default'} mstyle={s.btn}>
+                                    Добавить в друзья
+                                </Button>
                             }
                         </div>
-                        <div className={s.info}>
-                            <div className={s.name}>
-                                {u.name}
-                            </div>
-                            <div className={s.buttons}>
-                                <Button Text={'Написать сообщение'} Style={'default'}/>
-                                {u.followed ?
-                                    <Button onClick={() => {unFollow(u.id)}} Style={'default'} mstyle={s.btn}>
-                                        Удалить из друзей
-                                    </Button>
-                                    :
-                                    <Button onClick={() => {follow(u.id)}} Style={'default'} mstyle={s.btn}>
-                                        Добавить в друзья
-                                    </Button>
-                                }
-                            </div>
-                        </div>
                     </div>
-                )
+                </div>
+            )
             }
 
         </>

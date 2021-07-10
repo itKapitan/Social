@@ -1,0 +1,13 @@
+.wr {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: calc(100% - 35px);
+  height: 100%;
+  position: absolute;
+  background: #fff;
+  z-index: 10;
+}
+.preloader {
+  width: 100px;
+}

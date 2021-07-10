@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from "react-redux";
 import DialogPage from "./DialogPage";
-import {addNewMessageBodyCreator, updateNewMessageBodyCreator} from "../../../../redux/DialogsPageReducer";
+import {updateTextareaText, addMessage} from "../../../../redux/DialogsPageReducer";
 
 
 
@@ -11,16 +11,10 @@ let mapStateToProps = (state) => {
         value: state.DialogsPage.dialogNewMessageBody,
     }
 }
-let mapDispatchToProps = (dispatch) => {
-    return{
-        updateTextareaText: (text) => {
-            dispatch(updateNewMessageBodyCreator(text))
-        },
-        addMessage: () => {
-            dispatch(addNewMessageBodyCreator());
-        },
-    }
-}
 
-const DialogPageContainer = connect(mapStateToProps,mapDispatchToProps)(DialogPage)
-export default DialogPageContainer
+
+export default connect(mapStateToProps, {
+    updateTextareaText,
+    addMessage,
+})(DialogPage)
+
