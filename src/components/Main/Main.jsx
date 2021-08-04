@@ -9,6 +9,8 @@ import News from "./News/News"
 import SettingsMy from "./SettingsMy/SettingsMy"
 import UsersContainer from "./Users/UsersContainer";
 
+import ItemsContainer from "./ItemsText/ItemsContainer";
+
 
 
 export default function Main() {
@@ -28,6 +30,12 @@ export default function Main() {
             <Route path='/users' >
                 <UsersContainer/>
             </Route>
+
+
+            <Route path='/items' exact>
+                <ItemsContainer/>
+            </Route>
+
         </main>
     )
 }
